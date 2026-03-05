@@ -24,7 +24,7 @@ header {
   background-repeat: no-repeat;
   color: #fff;
   height: 200px;
-  padding: 0 2em;
+  padding: 0 1em;
 }
 
 .header-container {
@@ -34,13 +34,18 @@ header {
   height: 178px;
 }
 
+header h1 {
+  font-size: 1.5rem;
+}
+
 nav ul {
   list-style-type: none;
 }
 
-a {
+nav a {
   color: #fff;
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 a:hover {
@@ -52,10 +57,12 @@ a:hover {
 .search-container {
   display: flex;
   justify-content: center;
+  z-index: 100;
 }
 
 .search-icon-container, input#search, button#search-btn {
   border: 1px solid #c8c8c8;
+  z-index: 100;
 }
 
 .search-icon-container {
@@ -92,9 +99,7 @@ button#search-btn:hover {
 /* Main */
 
 main {
-  padding-top: 3em;
   min-height: 70vh;
-  /* background-color: antiquewhite; */
   display: flex;
   flex-direction: column;
 }
@@ -116,3 +121,110 @@ main {
   margin-top: 0.25em;
 }
 
+p.not-found {
+  font-size: 1.5rem;
+  max-width: 420px;
+}
+
+/* Movie list */
+
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em;
+}
+
+.movie-container {
+  border-bottom: 1px solid #c8c8c8;
+  display: flex;
+  padding: 2em 0;
+  font-size: 0.9rem;
+}
+
+.movie-img-wrapper {
+  flex: 1;
+}
+
+.movie-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+}
+
+.movie-data {
+  flex: 3;
+  padding: 0.5em 0.7em;
+}
+
+.movie-title {
+  font-weight: 700;
+  font-size: 1em;
+  margin-bottom: 0.7em;
+}
+
+.movie-rating {
+  font-weight: 400;
+  font-size: 0.75em;
+  padding-left: 0.25em;
+}
+
+.movie-stats {
+  display: flex;
+  font-size: 0.8em;
+  margin-bottom: 0.7em;
+}
+
+.movie-run-time {
+  margin-right: 1em;
+}
+
+.movie-genre {
+  margin-right: 1.2em;
+}
+
+.movie-plot p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 0.8em;
+  color: #757575;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+button.add-to-watchlist {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Media Queries */
+
+@media (min-width: 480px) {
+  header {
+    padding: 0 2em;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    font-size: 1rem;
+  }
+
+  .movies-container {
+    padding: 1em 2em;
+  }
+
+  .movie-container {
+    font-size: 1.1rem;
+  }
+}
