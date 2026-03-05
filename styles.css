@@ -199,6 +199,7 @@ button.add-to-watchlist {
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 .hidden {

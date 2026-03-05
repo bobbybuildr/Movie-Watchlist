@@ -7,14 +7,14 @@ const apiKey = 'a55ae57'
 searchBtn.addEventListener('click', fetchData)
 
 moviesContainer.addEventListener('click', (event) => {
-  const button = event.target.closest('.add-to-watchlist')
-  if (button) {
-    console.log(button.dataset.movieId)
+  const watchlistButton = event.target.closest('.add-to-watchlist')
+  if (watchlistButton) {
+    console.log(watchlistButton.dataset.movieId)
   }
 })
 
 function fetchData() {
-  fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&type=movie`)
+  fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&type=movie`)
     .then(res => res.json())
     .then(data => displayData(data))
 }
@@ -32,7 +32,7 @@ function displayData(data) {
 
     data.Search.forEach((movie) => {
       
-      fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`)
+      fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`)
         .then(res => res.json())
         .then(data => {
           movieInfoHtml = `
