@@ -214,6 +214,45 @@ button.add-to-watchlist, button.remove-from-watchlist {
   display: none;
 }
 
+/* Footer */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2em 0;
+}
+
+footer p {
+    margin: 0 0 10px 0;
+    color: #1F2937;
+    font-size: 1rem;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.social-links > li {
+  list-style: none;
+  padding: 0 0.5em;
+  display: flex;
+}
+.social-links > li > a {
+  text-decoration: none;
+}
+.social-links > li > a > img {
+  width: 28px;
+  transition: transform 0.2s ease;
+}
+.social-links > li > a > img:hover {
+  transform: scale(1.2);
+}
+
 /* Media Queries */
 
 @media (min-width: 480px) {
