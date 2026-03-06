@@ -126,6 +126,11 @@ p.not-found {
   max-width: 420px;
 }
 
+p.searching-placeholder {
+  font-size: 1.2rem;
+  max-width: 420px;
+}
+
 /* Movie list */
 
 .movies-container {
@@ -158,20 +163,22 @@ p.not-found {
 }
 
 .movie-title {
+  display: flex;
   font-weight: 700;
   font-size: 1em;
   margin-bottom: 0.7em;
 }
 
 .movie-rating {
+  align-self: center;
   font-weight: 400;
-  font-size: 0.75em;
+  font-size: 0.65em;
   padding-left: 0.25em;
 }
 
 .movie-stats {
   display: flex;
-  font-size: 0.8em;
+  font-size: 0.7em;
   margin-bottom: 0.7em;
 }
 
@@ -200,6 +207,7 @@ button.add-to-watchlist, button.remove-from-watchlist {
   border: none;
   padding: 0;
   cursor: pointer;
+  font-size: 1em;
 }
 
 .hidden {

@@ -3,7 +3,7 @@ const searchBtn = document.getElementById('search-btn')
 const placeHolder = document.querySelector('.placeholder')
 const moviesContainer = document.querySelector('.movies-container')
 const apiKey = 'a55ae57'
-const movieData = []
+let movieData = []
 
 searchBtn.addEventListener('click', fetchData)
 
@@ -19,7 +19,7 @@ moviesContainer.addEventListener('click', (event) => {
   // Remove from watchlist event listener
   if (removeFromWatchlistButton) {
     const chosenMovie = movieData.find(movie => movie.imdbID === removeFromWatchlistButton.dataset.movieId)
-    removeFromWatchlistButton.innerHTML = '<i class="fa-solid fa-minus"></i> Removed'
+    removeFromWatchlistButton.innerHTML = '<i class="fa-solid fa-check"></i> Removed'
     removeFromWatchlist(chosenMovie)
   }
 })
@@ -27,6 +27,12 @@ moviesContainer.addEventListener('click', (event) => {
 
 
 function fetchData() {
+  movieData = []
+  moviesContainer.innerHTML = ""
+  placeHolder.classList.remove('hidden')
+  moviesContainer.classList.add('hidden')
+  placeHolder.innerHTML = `<p class="searching-placeholder">Searching...</p>`
+
   fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&type=movie`)
     .then(res => res.json())
     .then(data => displayData(data))
@@ -40,8 +46,6 @@ function displayData(data) {
   } else if (data.Response === "True") {
     placeHolder.classList.add('hidden')
     moviesContainer.classList.remove('hidden')
-
-    let movieInfoHtml = ""
 
     data.Search.forEach((movie) => {
       
@@ -61,12 +65,12 @@ function displayData(data) {
 }
 
 function renderHtml(data) {
-  let watchlistHtml = `<button class="add-to-watchlist" data-movie-id="${data.imdbID}"><i class="fa-solid fa-circle-plus"></i> watchlist</button>` 
+  let watchlistHtml = `<button class="add-to-watchlist" data-movie-id="${data.imdbID}"><i class="fa-solid fa-circle-plus"></i> Watchlist</button>` 
   if (checkIsInWatchlist(data)) {
-    watchlistHtml = `<button class="remove-from-watchlist" data-movie-id="${data.imdbID}"><i class="fa-solid fa-circle-minus"></i> watchlist</button>`
+    watchlistHtml = `<button class="remove-from-watchlist" data-movie-id="${data.imdbID}"><i class="fa-solid fa-circle-minus"></i> Remove</button>`
   }
 
-  movieInfoHtml = `
+  const movieInfoHtml = `
     <div class="movie-container">
       <div class="movie-img-wrapper">
         <img class="movie-img" src="${data.Poster}" alt="${data.Title} movie poster">
