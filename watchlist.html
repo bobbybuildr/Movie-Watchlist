@@ -9,32 +9,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styles.css">
 
-  <title>Find your film</title>
+  <title>Find your film - Watchlist</title>
 </head>
-<body class="home">
+<body class="watchlist">
   <header>
     <div class="header-container">
     <h1>Find your film</h1>
     <nav>
       <ul>
         <li>
-          <a href="/watchlist.html" target="_self">My Watchlist</a>
+          <a href="./" target="_self">Movie Search</a>
         </li>
       </ul>
     </nav>
     </div>
-    <form class="search-container">
-      <label class="search-icon-container" for="search">
-        <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
-      </label>
-      <input id="search" name="search" type="text" placeholder="Search for a movie">
-      <button id="search-btn">Search</button>
-    </form>
   </header>
   <main>
     <div class="placeholder">
-      <i class="fa-solid fa-film film-icon"></i>
-      <p>Start exploring</p>
+      <p>Your watchlist is looking a little empty...</p>
+      <a href="./" target="_self"><i class="fa-solid fa-circle-plus"></i> Let's add some movies!</a>
     </div>
     <div class="movies-container hidden"></div>
   </main>

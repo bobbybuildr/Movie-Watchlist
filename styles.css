@@ -113,7 +113,7 @@ main {
   color: #dadada;
 }
 
-.placeholder i {
+.placeholder .film-icon {
   font-size: 3rem;
 }
 
@@ -131,12 +131,17 @@ p.searching-placeholder {
   max-width: 420px;
 }
 
+.placeholder a {
+  text-decoration: none;
+  color: #0d0d0d;
+}
+
 /* Movie list */
 
 .movies-container {
   display: flex;
   flex-direction: column;
-  padding: 1em 1em;
+  padding: 0.8em;
 }
 
 .movie-container {
@@ -159,7 +164,7 @@ p.searching-placeholder {
 
 .movie-data {
   flex: 3;
-  padding: 0.5em 0.7em;
+  padding: 0.1em 0.5em;
 }
 
 .movie-title {
@@ -178,16 +183,11 @@ p.searching-placeholder {
 
 .movie-stats {
   display: flex;
+  flex-wrap: wrap;
   font-size: 0.7em;
   margin-bottom: 0.7em;
-}
-
-.movie-run-time {
-  margin-right: 1em;
-}
-
-.movie-genre {
-  margin-right: 1.2em;
+  row-gap: 0.7em;
+  column-gap: 1em;
 }
 
 .movie-plot p {
@@ -235,5 +235,10 @@ button.add-to-watchlist, button.remove-from-watchlist {
 
   .movie-container {
     font-size: 1.1rem;
+  }
+
+  .movie-data {
+    flex: 3;
+    padding: 0.5em 0.7em;
   }
 }

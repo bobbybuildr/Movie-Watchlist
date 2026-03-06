@@ -1,11 +1,26 @@
-const searchInput = document.getElementById('search')
-const searchBtn = document.getElementById('search-btn')
 const placeHolder = document.querySelector('.placeholder')
 const moviesContainer = document.querySelector('.movies-container')
+const searchInput = document.getElementById('search')
+const posterPlaceholder = "/images/poster-placeholder.png"
 const apiKey = 'a55ae57'
 let movieData = []
 
-searchBtn.addEventListener('click', fetchData)
+if (document.body.classList.contains('home')) {
+  const searchBtn = document.getElementById('search-btn')
+  searchBtn.addEventListener('click', fetchData)
+}
+
+if (document.body.classList.contains('watchlist')) {
+  const watchlist = JSON.parse(localStorage.getItem('watchlist'))
+  if (watchlist && watchlist.length > 0) {
+    placeHolder.classList.add('hidden')
+    moviesContainer.classList.remove('hidden')
+    watchlist.forEach(movie => {
+      movieData.push(movie)
+      renderHtml(movie)
+    })
+  }
+}
 
 moviesContainer.addEventListener('click', (event) => {
   const addToWatchlistButton = event.target.closest('.add-to-watchlist')
@@ -20,13 +35,13 @@ moviesContainer.addEventListener('click', (event) => {
   if (removeFromWatchlistButton) {
     const chosenMovie = movieData.find(movie => movie.imdbID === removeFromWatchlistButton.dataset.movieId)
     removeFromWatchlistButton.innerHTML = '<i class="fa-solid fa-check"></i> Removed'
+    console.log(chosenMovie)
     removeFromWatchlist(chosenMovie)
   }
 })
 
-
-
-function fetchData() {
+function fetchData(e) {
+  e.preventDefault()
   movieData = []
   moviesContainer.innerHTML = ""
   placeHolder.classList.remove('hidden')
@@ -70,19 +85,30 @@ function renderHtml(data) {
     watchlistHtml = `<button class="remove-from-watchlist" data-movie-id="${data.imdbID}"><i class="fa-solid fa-circle-minus"></i> Remove</button>`
   }
 
+  let moviePoster = data.Poster
+  if (moviePoster === "N/A" || !moviePoster) {
+    moviePoster = posterPlaceholder
+  }
+
+  let moviePlot = data.Plot 
+  if (moviePlot === "N/A" || !moviePlot) {
+    moviePlot = "Movie summary not found."
+  }
+
   const movieInfoHtml = `
     <div class="movie-container">
       <div class="movie-img-wrapper">
-        <img class="movie-img" src="${data.Poster}" alt="${data.Title} movie poster">
+        <img class="movie-img" src="${moviePoster}" alt="${data.Title} movie poster">
       </div>
       <div id="movie-data" class="movie-data">
         <div class="movie-title">${data.Title} <span class="movie-rating">⭐ ${data.imdbRating}</span></div>
         <div class="movie-stats">
+          <div class="movie-year">${data.Year}</div>
           <div class="movie-run-time">${data.Runtime}</div>
           <div class="movie-genre">${data.Genre}</div>
           ${watchlistHtml}
         </div>
-        <div class="movie-plot"><p>${data.Plot}</p></div>
+        <div class="movie-plot"><p>${moviePlot}</p></div>
       </div>
     </div>
     `
