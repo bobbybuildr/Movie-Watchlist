@@ -195,7 +195,7 @@ p.not-found {
   overflow: hidden;
 }
 
-button.add-to-watchlist {
+button.add-to-watchlist, button.remove-from-watchlist {
   background: none;
   border: none;
   padding: 0;
